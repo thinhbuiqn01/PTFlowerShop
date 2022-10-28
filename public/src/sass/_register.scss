@@ -1,0 +1,42 @@
+.register {
+      margin: 60px auto;
+      padding: 3rem 2rem;
+      width: 400px;
+      border-radius: 8px;
+      background-color: rgb(255, 222, 245);
+
+      &__logo {
+            img {
+                  text-align: center;
+                  width: 50%;
+                  transform: translateX(50%);
+            }
+      }
+
+      form {
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            
+            input {
+                  background-color: transparent;
+                  padding: 1rem;
+                  border: 0.1rem solid rgb(248, 131, 223);
+                  border-radius: 0.4rem;
+                  
+            }
+
+            button {
+                  padding: 1rem;
+                  border-radius: .6rem;
+                  background-color: rgb(13, 189, 253);
+                  color: white;
+                  font-size: 1rem;
+
+                  &:hover {
+                        background-color: rgb(41, 198, 255)
+                  }
+            }
+      }
+}

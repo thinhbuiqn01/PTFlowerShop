@@ -1,0 +1,19 @@
+.header {
+      display: flex;
+      justify-content: space-between;
+
+      &__logo {
+            img {
+                  width: 5rem;
+            }
+      }
+
+      &__navbar {
+            
+            display: flex;
+
+            &__item {
+                  padding: 8px;
+            }
+      }
+}
