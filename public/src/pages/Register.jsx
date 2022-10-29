@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,6 +18,12 @@ const Register = () => {
     password: "",
     confirmPassword: "",
   });
+
+  useEffect(() => {
+    if(localStorage.getItem('flower-shop')){
+      Navigate('/');
+    }
+  },[]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

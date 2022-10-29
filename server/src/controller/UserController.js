@@ -27,3 +27,24 @@ module.exports.register = async (req, res, next) => {
     next(err);
   }
 };
+
+module.exports.login = async (req, res, next) => {
+  try {
+    /* Gán giá trị người dùng nhập */
+    const { username, password } = req.body;
+
+    /* Kiểm tra username, phone đã có trong hệ thống chưa */
+    const user = await User.findOne({ username });
+    if (!user) {
+      return res.json({ msg: "Incorrect username or password", status: false });
+    } 
+    const isPasswordsValid = await bcrypt.compare(password, user.password);
+    if(!isPasswordsValid) {
+      return res.json({ msg: "Incorrect username or password", status: false });
+    }
+    delete user.password;
+    return res.json({ status: true, user });
+  } catch (err) {
+    next(err);
+  }
+};
