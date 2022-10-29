@@ -1,14 +1,19 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const userRoutes = require("./routes/UserRoutes")
 
 const port = process.env.PORT || 5000;
 const MONGO_URL =
   process.env.MONGO_URL || "mongodb://localhost:27017/pt_shop_flower";
 
 const app = express();
+require('dotenv').config();
+
 app.use(cors());
 app.use(express.json());
+
+app.use('/api/auth', userRoutes)
 
 mongoose
   .connect(MONGO_URL, {
