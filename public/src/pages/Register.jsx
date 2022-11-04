@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,6 +10,7 @@ import axios from "axios";
 import { registerRoute } from "../utils/APIRoutes";
 
 import logo from "../assets/images/logo.jpg";
+document.title = "Register";
 
 const Register = () => {
   const [values, setValues] = useState({
@@ -18,13 +19,6 @@ const Register = () => {
     password: "",
     confirmPassword: "",
   });
-
-  useEffect(() => {
-    if(localStorage.getItem('flower-shop')){
-      Navigate('/');
-    }
-  },[]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!handleValidation()) {
@@ -72,34 +66,41 @@ const Register = () => {
 
   const handleValidation = () => {
     const { username, phone, password, confirmPassword } = values;
-
-    if (password.length < 6) {
-      toast.error("🦄 Please, Enter your password than 6 characters!", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    } else if (username.length < 8) {
+    if (
+      password === "" ||
+      confirmPassword === "" ||
+      username === "" ||
+      phone === ""
+    ) {
+      toast.error("🦄 Please, Enter enough information!", toastOptionError);
+      return true;
+    }
+    if (password.length < 8) {
       toast.error(
-        "🦄 Please, Enter your username than 8 characters!",
+        "🦄 Please, Enter your password than 8 characters!",
         toastOptionError
       );
+      return true;
+    } else if (username.length < 4) {
+      toast.error(
+        "🦄 Please, Enter your username than 4 characters!",
+        toastOptionError
+      );
+      return true;
     } else if (phone.length !== 10) {
       toast.error(
         "🦄 Please, Enter your phone number 10 characters!",
         toastOptionError
       );
+      return true;
     } else if (password !== confirmPassword) {
       toast.error("Enter your password the same!", toastOptionError);
+      return true;
     }
   };
 
   const handleOnChange = (e) => {
+    console.log(values);
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
@@ -143,7 +144,7 @@ const Register = () => {
 
         <button type="submit">Create account</button>
         <span>
-          Already have account? <Link to="/login">Login</Link>{" "}
+          Already have account? <Link to="/login">Log In</Link>{" "}
         </span>
       </form>
       <ToastContainer />

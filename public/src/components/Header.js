@@ -26,7 +26,7 @@ const Header = () => {
             <Link to="/contact">Contact</Link>
           </div>
           <div className="header__navbar__item">
-            <Link to="/login">Account</Link>
+            <Link to="/login">Log out</Link>
           </div>
         </div>
       </div>

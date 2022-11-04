@@ -1,6 +1,6 @@
-import React, { useState } from"react";
+import React, { useState } from "react";
 
-import { Link ,useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,8 +10,7 @@ import axios from "axios";
 import { loginRoute } from "../utils/APIRoutes";
 
 import logo from "../assets/images/logo.jpg";
-import { useEffect } from "react";
-
+document.title = "Login";
 const Login = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState({
@@ -19,11 +18,11 @@ const Login = () => {
     password: "",
   });
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if(localStorage.getItem('flower-shop')){
       navigate('/');
     }
-  },[]);
+  },[]); */
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,48 +34,48 @@ const Login = () => {
         password,
       });
       if (data.status === false) {
-        toast.error(data.msg, toastOptionError);
+        toast.error(data.msg, toastOption.error);
       }
       if (data.status === true) {
         toast.success(
           <Link to="/login">You can login here!</Link>,
-          toastOptionSuccess
+          toastOption.success
         );
         localStorage.setItem("flower-shop", JSON.stringify(data.user));
         navigate("/");
       }
     }
   };
-
-  const toastOptionSuccess = {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-  };
-
-  const toastOptionError = {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
+  const toastOption = {
+    success: {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    },
+    error: {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    }
   };
 
   const handleValidation = () => {
     const { username, password } = values;
 
     if (password.length === "") {
-      toast.error("🦄 Username and password is require", toastOptionError);
+      toast.error("🦄 Username and password is require", toastOption.error);
     } else if (username.length === "") {
-      toast.error("🦄 Username and password is require", toastOptionError);
+      toast.error("🦄 Username and password is require", toastOption.error);
     }
   };
 
