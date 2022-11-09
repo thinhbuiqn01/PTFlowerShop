@@ -1,16 +1,20 @@
 const { model } = require("mongoose");
 const Product = require("../model/ProductModel");
 
-module.exports.listProducts = async (req, res, next) => {
-  try {
-    Product.find({}).then((products) => {
-      res.json(products);
+  
+module.exports.newProduct = async (req, res, next) => {
+  try { 
+    const { nameproduct, origin, price, image, categoryID } = req.body;
+    console.log(categoryID);
+    const product = await Product.create({
+      nameproduct,
+      origin,
+      price,
+      categoryID,
+      image,
     });
-  } catch (err) {
+    return res.json({status: true, product});
+  } catch (err) { 
     next(err);
   }
 };
-
-module.exports.newProduct =  (req, res, next) => {
-  console.log(req.body);
-}

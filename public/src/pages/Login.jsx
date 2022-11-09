@@ -9,8 +9,7 @@ import axios from "axios";
 
 import { loginRoute } from "../utils/APIRoutes";
 
-import logo from "../assets/images/logo.jpg";
-document.title = "Login";
+import logo from "../assets/images/logo.jpg"; 
 const Login = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState({

@@ -10,7 +10,6 @@ import axios from "axios";
 import { registerRoute } from "../utils/APIRoutes";
 
 import logo from "../assets/images/logo.jpg";
-document.title = "Register";
 
 const Register = () => {
   const [values, setValues] = useState({
@@ -99,8 +98,7 @@ const Register = () => {
     }
   };
 
-  const handleOnChange = (e) => {
-    console.log(values);
+  const handleOnChange = (e) => { 
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 

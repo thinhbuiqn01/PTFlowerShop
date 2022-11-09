@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const slug = require("mongoose-slug-generator");
 
 const productSchema = new mongoose.Schema({
   nameproduct: {
@@ -17,15 +16,13 @@ const productSchema = new mongoose.Schema({
   image: {
     type: String,
   },
-  idCategory: {
+  categoryID: {
     type: Number,
-    unique: true,
+    default: 0,
   },
   vote: {
     type: Number,
     default: 0,
   },
 });
-
-mongoose.plugin(slug);
 module.exports = mongoose.model("Products", productSchema);
