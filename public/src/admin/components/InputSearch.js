@@ -1,14 +1,13 @@
 import React from "react";
-
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import Button from "react-bootstrap/Button";
 
-const Search = () => {
+const InputSearch = (props) => {
   return (
-    <div className="admin__header__search">
+    <div>
       <InputGroup className="mb-3">
-        <Form.Control placeholder="Enter your key" />
+        <Form.Control placeholder={props.placeholder} />
         <Button variant="info" id="button-addon2">
           Search
         </Button>
@@ -17,4 +16,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default InputSearch;
