@@ -4,7 +4,8 @@ import { addProduct } from "../utils/APIRoutes";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
-const NewProduct = () => {
+const NewProduct = (props) => {
+  const categories = props.data.category;
   const [values, setValues] = useState({
     nameproduct: "",
     origin: "",
@@ -28,46 +29,61 @@ const NewProduct = () => {
       image,
     });
     if (data.status === true) {
-      return toast.success(<Link to="/admin/products" >You can see the product list here!</Link>, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
+      setValues({
+        nameproduct: "",
+        origin: "",
+        price: "",
+        categoryID: 0,
+        image: "",
       });
+      return toast.success(
+        <Link to="/admin/products">You can see the product list here!</Link>,
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
     }
   };
   return (
-    <div className="product">
+    <div className="product" style={{ margin: "0 auto" }}>
       <form onSubmit={(e) => handleSubmit(e)}>
         <input
+          value={values.nameproduct}
           type="text"
           placeholder="Name product"
           name="nameproduct"
           onChange={(e) => handleOnChange(e)}
         />
         <input
+          value={values.origin}
           type="text"
           placeholder="Origin"
           name="origin"
           onChange={(e) => handleOnChange(e)}
         />
         <input
+          value={values.price}
           type="text"
           placeholder="Price product"
           name="price"
           onChange={(e) => handleOnChange(e)}
         />
         <select name="categoryID" onChange={(e) => handleOnChange(e)}>
-          <option value={1}>Hoa chậu</option>
-          <option value={2}>Hoa giỏ</option>
-          <option value={3}>Hoa bó</option>
-          <option value={4}>Hoa giấy</option>
+          {categories?.map((category, index) => (
+            <option key={index} value={category._id}>
+              {category.namecategory}
+            </option>
+          ))}
         </select>
         <input
+          value={values.image}
           type="file"
           placeholder="image"
           name="image"

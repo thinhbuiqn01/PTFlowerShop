@@ -4,4 +4,6 @@ export const loginRoute = `${host}/api/auth/login`;
 
 export const addProduct = `${host}/api/product/new`;
 export const listProduct = `${host}/api/product`;
-export const category = `${host}/api/product/category`;
+
+export const listCategory = `${host}/api/category`;
+export const addCategory = `${host}/api/category/new`;

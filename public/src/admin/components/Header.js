@@ -22,6 +22,7 @@ const Header = () => {
           ></Nav>
           <NavDropdown
             title="Admin"
+            align="end"
             id="navbarScrollingDropdown"
             style={{ margin: "0 10rem" }}
           >

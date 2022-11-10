@@ -2,33 +2,28 @@ import React from "react";
 
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Table from "react-bootstrap/Table"; 
+import Table from "react-bootstrap/Table";
 import InputSearch from "./InputSearch";
-const TableProduct = (props) => { 
-  const products = props.data.products;
-  const placeholder = "Input your product";
+
+const TableCategory = (props) => {
+  const categories = props.data.category; 
+  const placeholder = "Input your category";
   return (
-    <Container style={{ background: "#EDEDED"}}> 
+    <Container style={{ background: "#EDEDED" }}>
       <InputSearch placeholder={placeholder} />
       <Table hover>
         <thead>
           <tr>
             <th>#</th>
-            <th>Tên sản phẩm</th>
-            <th>Xuất xứ</th>
-            <th>Giá</th>
-            <th>Đã mua</th>
+            <th>Name Category</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          {products?.map((product, index) => (
+          {categories?.map((category, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
-              <td>{product.nameproduct}</td>
-              <td>{product.origin}</td>
-              <td>{product.price}</td>
-              <td>{product.vote}</td>
+              <td>{category.namecategory}</td> 
               <td>
                 <Button variant="primary" size="sm">
                   Repair
@@ -41,9 +36,9 @@ const TableProduct = (props) => {
             </tr>
           ))}
         </tbody>
-      </Table>
+      </Table> 
     </Container>
   );
 };
 
-export default TableProduct;
+export default TableCategory;
