@@ -4,7 +4,6 @@ const Product = require("../model/ProductModel");
 module.exports.newProduct = async (req, res, next) => {
   try {
     const { nameproduct, origin, price, image, categoryID } = req.body;
-    console.log(categoryID);
     const product = await Product.create({
       nameproduct,
       origin,

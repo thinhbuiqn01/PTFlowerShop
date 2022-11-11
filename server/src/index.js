@@ -1,8 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+
 const userRoutes = require("./routes/UserRoutes");
 const productRoutes = require("./routes/ProductRoutes");
+const categoryRoutes = require("./routes/CategoryRoutes")
+
 const port = process.env.PORT || 5000;
 const MONGO_URL =
   process.env.MONGO_URL || "mongodb://localhost:27017/pt_shop_flower";
@@ -15,6 +18,7 @@ app.use(express.json());
 
 app.use("/api/auth", userRoutes);
 app.use("/api/product", productRoutes);
+app.use("/api/category", categoryRoutes);
 
 mongoose
   .connect(MONGO_URL, {
