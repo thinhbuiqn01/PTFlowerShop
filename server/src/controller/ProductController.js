@@ -18,6 +18,12 @@ module.exports.newProduct = async (req, res, next) => {
 };
 
 module.exports.listProduct = async (req, res, next) => {
-  const products = await Product.find({}); 
+  const products = await Product.find({});
   return res.json({ status: true, products });
+};
+
+module.exports.deleteProduct = async (req, res, next) => {
+  console.log(req.params);
+  const data = await Product.deleteOne({ _id: req.params._id });
+  return res.json(data);
 };
