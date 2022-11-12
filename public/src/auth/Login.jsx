@@ -1,15 +1,28 @@
+import axios from "axios";
+
+import firebase from "firebase/compat/app";
+
 import React, { useState } from "react";
+
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 import { Link, useNavigate } from "react-router-dom";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import axios from "axios";
 
 import { loginRoute } from "../utils/APIRoutes";
 
-import logo from "../assets/images/logo.jpg"; 
+import logo from "../assets/images/logo.jpg";
+
+const uiConfig = {
+  // Popup signin flow rather than redirect flow.
+  signInFlow: "redirect", 
+  signInSuccessUrl: '/',
+  // We will display Google and Facebook as auth providers.
+  signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+};
+
 const Login = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState({
@@ -65,7 +78,7 @@ const Login = () => {
       draggable: true,
       progress: undefined,
       theme: "light",
-    }
+    },
   };
 
   const handleValidation = () => {
@@ -111,6 +124,7 @@ const Login = () => {
           Don't have account? <Link to="/register">Register</Link>{" "}
         </span>
       </form>
+      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
       <ToastContainer />
     </div>
   );

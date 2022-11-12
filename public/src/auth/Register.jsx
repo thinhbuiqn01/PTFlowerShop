@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
+
 import { Link } from "react-router-dom";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import axios from "axios";
@@ -10,6 +11,8 @@ import axios from "axios";
 import { registerRoute } from "../utils/APIRoutes";
 
 import logo from "../assets/images/logo.jpg";
+
+// Configure Firebase.
 
 const Register = () => {
   const [values, setValues] = useState({
@@ -98,9 +101,13 @@ const Register = () => {
     }
   };
 
-  const handleOnChange = (e) => { 
+  const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+
+  const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state.
+
+  // Listen to the Firebase Auth state and set the local state.
 
   return (
     <div className="register">
