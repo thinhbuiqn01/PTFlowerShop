@@ -17,7 +17,7 @@ const NavFillProduct = (props) => {
     axios.get(listCategory).then((res) => {
       setCategories(res.data);
     });
-  }, []); 
+  }, []);  
   return (
     <div>
       <Tab.Container
@@ -32,7 +32,7 @@ const NavFillProduct = (props) => {
             <Nav.Link eventKey="two">New Product</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="three">Link</Nav.Link>
+            <Nav.Link eventKey={`${props.key}`} disabled>Update product</Nav.Link>
           </Nav.Item>
         </Nav>
         <Tab.Content>
@@ -42,7 +42,8 @@ const NavFillProduct = (props) => {
           <Tab.Pane eventKey="two">
             <NewProduct data={categories} />
           </Tab.Pane>
-          <Tab.Pane eventKey="three">tablecategory</Tab.Pane>
+          <Tab.Pane eventKey={`${props.key}`}> 
+          </Tab.Pane>
         </Tab.Content>
       </Tab.Container>
     </div>

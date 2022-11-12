@@ -19,7 +19,7 @@ const NewProduct = (props) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault();  
     const { nameproduct, origin, price, image, categoryID } = values;
     const { data } = await axios.post(addProduct, {
       nameproduct,

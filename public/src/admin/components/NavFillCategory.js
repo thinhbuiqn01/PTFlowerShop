@@ -4,8 +4,7 @@ import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav"; 
 import TableCategory from "./TableCategory";
 import {  listCategory } from "../../utils/APIRoutes";
-import axios from "axios"; 
-import NewProduct from "../NewProduct";
+import axios from "axios";  
 import NewCategory from "../NewCategory";
 const NavFillCategory = (props) => { 
 

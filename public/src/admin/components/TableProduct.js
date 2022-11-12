@@ -9,6 +9,7 @@ import InputSearch from "./InputSearch";
 
 import axios from "axios";
 import { deleteProduct } from "../../utils/APIRoutes";
+import { Link } from "react-router-dom";
 
 const TableProduct = (props) => {
   const products = props.data.products;
@@ -21,19 +22,12 @@ const TableProduct = (props) => {
   const [show, setShow] = useState(false);
 
   const handleDeleteProduct = async (_id) => {
-    setShow(true);
-    if (confirm === true) {
-      await axios.delete(`${deleteProduct}/${_id}/delete`).then((res) => {});
-    } else {
-      console.log(1);
-      setShow(false);
-    }
+    await axios.delete(`${deleteProduct}/${_id}/delete`).then((res) => {});
   };
 
-  const handleConfirm = () => {
-    setConfirm(true);
-    console.log(confirm);
-  };
+  const handleConfirm = async (_id) => {};
+
+  const handleRepair = (_id) => {};
 
   return (
     <Container style={{ background: "#EDEDED" }}>
@@ -57,12 +51,15 @@ const TableProduct = (props) => {
               <td>{product.origin}</td>
               <td>{product.price}</td>
               <td>{product.vote}</td>
-              <td>{product._id}</td>
               <td>
-                <Button variant="primary" size="sm">
-                  Repair
+                <Button
+                  variant="primary"
+                  size="sm"
+                  onClick={(e) => handleRepair(e)}
+                >
+                  <Link to={`/admin/product/${product._id}/`} className="color-white">Repair</Link>
                 </Button>
-                <span> </span>
+                <span></span>
                 <Button
                   variant="danger"
                   size="sm"
@@ -77,7 +74,7 @@ const TableProduct = (props) => {
                   </Modal.Header>
                   <Modal.Body>You have certain delete this product</Modal.Body>
                   <Modal.Footer>
-                    <Button variant="danger" onClick={handleConfirm}>
+                    <Button variant="danger" onClick={(e) => handleConfirm(e)}>
                       Confirm
                     </Button>
                     <Button variant="primary" onClick={handleClose}>
