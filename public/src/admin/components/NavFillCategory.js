@@ -10,7 +10,6 @@ const NavFillCategory = (props) => {
 
   const [categories, setCategories] = useState([]);
   useEffect(() => { 
-
     axios.get(listCategory).then((res) => {
       setCategories(res.data);
     });

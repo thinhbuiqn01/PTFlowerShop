@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { addProduct } from "../utils/APIRoutes";
 import { ToastContainer, toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NewProduct = (props) => {
   const categories = props.data.category;
+  const navigate = useNavigate();
+
   const [values, setValues] = useState({
     nameproduct: "",
     origin: "",

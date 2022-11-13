@@ -12,6 +12,8 @@ import { UpdateProduct } from "./admin/UpdateProduct";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Home from "./pages/Home";
+import Product from "./admin/Product";
+import Category from "./admin/Category";
 
 const config = {
   apiKey: "AIzaSyBdms9-FMBeViv6YE05IdY8-TWpdxPmoMU",
@@ -41,6 +43,8 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<Dashboard />} />
+        <Route path="/admin/product" element={<Product />} />
+        <Route path="/admin/category" element={<Category />} />
         <Route path="/admin/product/:id" element={<UpdateProduct />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Home />} />

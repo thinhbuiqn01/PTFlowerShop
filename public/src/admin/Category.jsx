@@ -1,41 +1,41 @@
 import React from "react";
-import Header from "./components/Header";
 
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
-
-import NavFillProduct from "./components/NavFillProduct";
-import NavFillCategory from "./components/NavFillCategory";
 import { Link } from "react-router-dom";
+import Header from "./components/Header";
 
-const Dashboard = (props) => {
+import NavFillCategory from "./components/NavFillCategory";
+const Category = () => {
   return (
     <>
       <Header />
-      <Tab.Container id="left-tabs-example" defaultActiveKey="dashboard">
+      <Tab.Container id="left-tabs-example" defaultActiveKey="category">
         <Row>
           <Col sm={3} bg="info">
             <Nav variant="pills" className="flex-column">
               <Nav.Item>
-                <Nav.Link eventKey="dashboard">Dashboard</Nav.Link>
+                <Nav.Link eventKey="dashboard">
+                  <Link to="/admin">Dashboard</Link>
+                </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="product">
+                <Nav.Link eventKey="product"  >
                   <Link to="/admin/product">Product</Link>
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="category">
-                  <Link to="/admin/category">Category</Link>
-                </Nav.Link>
+                <Nav.Link eventKey="category">Category</Nav.Link>
               </Nav.Item>
             </Nav>
           </Col>
           <Col sm={9}>
             <Tab.Content>
-              <Tab.Pane eventKey="dashboard">content Dashboard</Tab.Pane>
+              <Tab.Pane eventKey="category">
+                <NavFillCategory />
+              </Tab.Pane>
             </Tab.Content>
           </Col>
         </Row>
@@ -44,4 +44,4 @@ const Dashboard = (props) => {
   );
 };
 
-export default Dashboard;
+export default Category;

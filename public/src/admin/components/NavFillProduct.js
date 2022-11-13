@@ -6,9 +6,10 @@ import TableProduct from "./TableProduct";
 import { listProduct, listCategory } from "../../utils/APIRoutes";
 import axios from "axios";
 import NewProduct from "../NewProduct";
+import { Link } from "react-router-dom";
 const NavFillProduct = (props) => {
   const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]); 
+  const [categories, setCategories] = useState([]);
   useEffect(() => {
     axios.get(listProduct).then((res) => {
       setProducts(res.data);
@@ -17,7 +18,7 @@ const NavFillProduct = (props) => {
     axios.get(listCategory).then((res) => {
       setCategories(res.data);
     });
-  }, []);  
+  }, []);
   return (
     <div>
       <Tab.Container
@@ -32,18 +33,19 @@ const NavFillProduct = (props) => {
             <Nav.Link eventKey="two">New Product</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey={`${props.key}`} disabled>Update product</Nav.Link>
+            <Nav.Link eventKey={`${props.key}`} disabled>
+              Update product
+            </Nav.Link>
           </Nav.Item>
         </Nav>
         <Tab.Content>
           <Tab.Pane eventKey="one">
-            <TableProduct data={products}  />
+            <TableProduct data={products} />
           </Tab.Pane>
           <Tab.Pane eventKey="two">
             <NewProduct data={categories} />
           </Tab.Pane>
-          <Tab.Pane eventKey={`${props.key}`}> 
-          </Tab.Pane>
+          <Tab.Pane eventKey={`${props.key}`}></Tab.Pane>
         </Tab.Content>
       </Tab.Container>
     </div>

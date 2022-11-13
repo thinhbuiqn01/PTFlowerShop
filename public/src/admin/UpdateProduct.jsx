@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"; 
 import Header from "./components/Header";
 
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { getProduct, listCategory, updateProduct } from "../utils/APIRoutes";
 export const UpdateProduct = (props) => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [values, setValues] = useState({
     nameproduct: "",
@@ -22,8 +23,7 @@ export const UpdateProduct = (props) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    axios.get(listCategory).then((res) => {
-      console.log(res.data.category);
+    axios.get(listCategory).then((res) => { 
       setCategories(res.data.category);
     });
 
@@ -52,7 +52,10 @@ export const UpdateProduct = (props) => {
       price,
       categoryID,
       image,
-    });    
+    });
+    if(data.status === true){
+      navigate('/admin/product')
+    }    
   };
 
   return (

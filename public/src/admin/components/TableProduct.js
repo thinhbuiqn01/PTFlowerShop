@@ -1,37 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 
-import InputSearch from "./InputSearch";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 
 import axios from "axios";
-import { deleteProduct } from "../../utils/APIRoutes";
+import { deleteProduct, searchProduct } from "../../utils/APIRoutes";
 import { Link } from "react-router-dom";
 
 const TableProduct = (props) => {
   const products = props.data.products;
-  const placeholder = "Input your product";
 
-  const [confirm, setConfirm] = useState(false);
-
+  const [idDelete, setIdDelete] = useState();
+  const [inputSearch, setInputSearch] = useState("");
   const handleClose = () => setShow(false);
-
   const [show, setShow] = useState(false);
 
-  const handleDeleteProduct = async (_id) => {
-    await axios.delete(`${deleteProduct}/${_id}/delete`).then((res) => {});
+  const handleConfirm = async () => {
+    await axios.delete(`${deleteProduct}/${idDelete}/delete`).then((res) => {});
+    setShow(false);
   };
-
-  const handleConfirm = async (_id) => {};
 
   const handleRepair = (_id) => {};
 
+  const handleOnChange = (e) => {
+    setInputSearch(e.target.value);
+  };
+
+  const handleSubmit = async (e) => { 
+    const data = await axios.get(`${searchProduct}${inputSearch}`)
+    console.log(data);
+  };
+
   return (
     <Container style={{ background: "#EDEDED" }}>
-      <InputSearch placeholder={placeholder} />
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <InputGroup className="mb-6">
+          <Form.Control
+            placeholder="Input data ..."  
+            name="q"
+            onChange={(e) => handleOnChange(e)}
+          />
+          <Button variant="info" id="button-addon2">
+            Search
+          </Button>
+        </InputGroup>
+      </form>
       <Table hover>
         <thead>
           <tr>
@@ -57,13 +75,21 @@ const TableProduct = (props) => {
                   size="sm"
                   onClick={(e) => handleRepair(e)}
                 >
-                  <Link to={`/admin/product/${product._id}/`} className="color-white">Repair</Link>
+                  <Link
+                    to={`/admin/product/${product._id}/`}
+                    className="color-white"
+                  >
+                    Repair
+                  </Link>
                 </Button>
                 <span></span>
                 <Button
                   variant="danger"
                   size="sm"
-                  onClick={(e) => handleDeleteProduct(product._id)}
+                  onClick={(e) => {
+                    setShow(true);
+                    setIdDelete(product._id);
+                  }}
                 >
                   Delete
                 </Button>

@@ -27,9 +27,13 @@ module.exports.deleteProduct = async (req, res, next) => {
   return res.json(data);
 };
 
-module.exports.getProduct = async (req, res, next) => {
+module.exports.getProductID = async (req, res, next) => {
   const data = await Product.findById({ _id: req.params.id });
   return res.json(data);
+};
+
+module.exports.getProduct = async (req, res, next) => {
+  console.log(req.params);
 };
 
 module.exports.updateProduct = async (req, res, next) => {
@@ -41,7 +45,7 @@ module.exports.updateProduct = async (req, res, next) => {
       price,
       categoryID,
       image,
-    },);
+    });
     return res.json({ status: true, data });
   } catch (err) {
     next(err);
