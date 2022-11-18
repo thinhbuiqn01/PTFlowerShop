@@ -4,6 +4,7 @@ const Product = require("../model/ProductModel");
 module.exports.newProduct = async (req, res, next) => {
   try {
     const { nameproduct, origin, price, image, categoryID } = req.body;
+    console.log(req.body);
     const product = await Product.create({
       nameproduct,
       origin,
@@ -32,13 +33,15 @@ module.exports.getProductID = async (req, res, next) => {
   return res.json(data);
 };
 
-module.exports.getProduct = async (req, res, next) => {
-  console.log(req.params);
+/* module.exports.getProduct = async (req, res, next) => {
+  const data = await Product.find({});
+  console.log(data);
 };
-
+ */
 module.exports.updateProduct = async (req, res, next) => {
   try {
     const { nameproduct, origin, price, image, categoryID } = req.body;
+    
     const data = await Product.updateOne({
       nameproduct,
       origin,

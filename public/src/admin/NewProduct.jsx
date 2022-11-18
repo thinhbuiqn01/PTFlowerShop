@@ -13,45 +13,38 @@ const NewProduct = (props) => {
     origin: "",
     price: "",
     categoryID: 0,
-    image: "",
   });
+  const [selectImage, setSelectImage] = useState({});
 
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+  const handleOnChangeFile = (e) => {
+    let image = e.target.files[0];
+    /*  image = image.slice(5, 300)  */
+    setSelectImage(image);
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();  
-    const { nameproduct, origin, price, image, categoryID } = values;
+    e.preventDefault();
+    const { nameproduct, origin, price, categoryID } = values;
+    const image = {
+      lastModified: selectImage.lastModified,
+      name: selectImage.name,
+      size: selectImage.size,
+      lastModifiedDate: selectImage.lastModifiedDate,
+      type: selectImage.type,
+      webkitRelativePath: selectImage.webkitRelativePath,
+    };
+    console.log(image);
+
     const { data } = await axios.post(addProduct, {
       nameproduct,
       origin,
       price,
       categoryID,
       image,
-    });
-    if (data.status === true) {
-      setValues({
-        nameproduct: "",
-        origin: "",
-        price: "",
-        categoryID: 0,
-        image: "",
-      });
-      return toast.success(
-        <Link to="/admin/products">You can see the product list here!</Link>,
-        {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        }
-      );
-    }
+    }); 
   };
   return (
     <div className="product" style={{ margin: "0 auto" }}>
@@ -88,8 +81,7 @@ const NewProduct = (props) => {
           value={values.image}
           type="file"
           placeholder="image"
-          name="image"
-          onChange={(e) => handleOnChange(e)}
+          onChange={(e) => handleOnChangeFile(e)}
         />
         <button type="submit">Create product</button>
       </form>

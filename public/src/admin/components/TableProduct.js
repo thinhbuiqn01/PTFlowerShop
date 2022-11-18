@@ -9,8 +9,8 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
 import axios from "axios";
-import { deleteProduct, searchProduct } from "../../utils/APIRoutes";
-import { Link } from "react-router-dom";
+import { deleteProduct } from "../../utils/APIRoutes";
+import { Link } from "react-router-dom"; 
 
 const TableProduct = (props) => {
   const products = props.data.products;
@@ -31,18 +31,16 @@ const TableProduct = (props) => {
     setInputSearch(e.target.value);
   };
 
-  const handleSubmit = async (e) => { 
-    const data = await axios.get(`${searchProduct}${inputSearch}`)
-    console.log(data);
-  };
+  const handleSubmit = async (e) => {
+    // const data = await axios.get(`${searchProduct}${inputSearch}`)
+  }; 
 
   return (
     <Container style={{ background: "#EDEDED" }}>
       <form onSubmit={(e) => handleSubmit(e)}>
         <InputGroup className="mb-6">
           <Form.Control
-            placeholder="Input data ..."  
-            name="q"
+            placeholder="Input data ..."
             onChange={(e) => handleOnChange(e)}
           />
           <Button variant="info" id="button-addon2">
@@ -52,11 +50,13 @@ const TableProduct = (props) => {
       </form>
       <Table hover>
         <thead>
-          <tr>
+          <tr> 
             <th>#</th>
             <th>Name</th>
+            
             <th>Origin</th>
             <th>Price</th>
+            <th>Image</th>
             <th>Sold</th>
             <th></th>
           </tr>
@@ -68,6 +68,9 @@ const TableProduct = (props) => {
               <td>{product.nameproduct}</td>
               <td>{product.origin}</td>
               <td>{product.price}</td>
+              <td>
+                <img src={`http://localhost:3000/3fc71ff6-4d0b-4f89-bb30-cd95615b186e`} alt="" style={{ width: "300px", height: "300px" }} />{" "}
+              </td>
               <td>{product.vote}</td>
               <td>
                 <Button

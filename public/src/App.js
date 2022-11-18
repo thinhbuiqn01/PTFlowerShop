@@ -1,19 +1,10 @@
 import React, { useEffect } from "react";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-import Dashboard from "./admin/Dashboard";
-import { UpdateProduct } from "./admin/UpdateProduct";
-import Login from "./auth/Login";
-import Register from "./auth/Register";
-import Home from "./pages/Home";
-import Product from "./admin/Product";
-import Category from "./admin/Category";
+import Header from "./components/Header";
+import { Outlet } from "react-router-dom";
 
 const config = {
   apiKey: "AIzaSyBdms9-FMBeViv6YE05IdY8-TWpdxPmoMU",
@@ -26,30 +17,26 @@ function App() {
   useEffect(() => {
     const unregisterAuthObserver = firebase
       .auth()
-      .onAuthStateChanged(async (user) => {
-        console.log(user);
-        if (!user) {
-          console.log("user is not login");
+      .onAuthStateChanged(async (user) => { 
+        if (!user) { 
           return;
         }
-        console.log(("Logged in user:", user.displayName));
-        const token = await user.getIdToken();        ;
-        console.log(("Logged in user token:", token));
+        const token = await user.getIdToken();
       });
     return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
   }, []);
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/admin" element={<Dashboard />} />
-        <Route path="/admin/product" element={<Product />} />
-        <Route path="/admin/category" element={<Category />} />
-        <Route path="/admin/product/:id" element={<UpdateProduct />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <div className="App">
+        <div className="app-header">
+          <Header />
+        </div>
+        <div className="app-content">
+          <Outlet />
+        </div>
+        <div className="app-footer"></div>
+      </div>
+    </>
   );
 }
 

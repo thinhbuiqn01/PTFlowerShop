@@ -23,13 +23,10 @@ const getFirebaseToken = async () => {
       .auth()
       .onAuthStateChanged(async (user) => {
         console.log(user);
-        if (!user) {
-          console.log("user is not login");
+        if (!user) { 
           return;
-        }
-        console.log(("Logged in user:", user.displayName));
-        const token = await user.getIdToken();
-        console.log(("Logged in user token:", token));
+        } 
+        const token = await user.getIdToken(); 
       });
     return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
   });

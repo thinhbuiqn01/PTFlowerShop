@@ -1,6 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
-import ToastMessage from "../components/ToastMessage";
+import React, { useState } from "react"; 
 import { addCategory } from "../utils/APIRoutes";
 
 const NewCategory = () => {
