@@ -14,13 +14,15 @@ import Dashboard from "./admin/Dashboard";
 import Product from "./admin/Product";
 import Admin from "./components/Admin";
 import Category from "./admin/Category";
+import Login from "./components/Login";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
-        <Route path="product" element={<Product />} />
+        <Route path="login" element={<Login />} />
+        
       </Route>
       <Route path="/admin" element={<Admin />}>
         <Route index path="/admin/dashboard" element={<Dashboard />} />

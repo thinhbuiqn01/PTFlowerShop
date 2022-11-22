@@ -5,6 +5,7 @@ const srcImg =
   "https://raw.githubusercontent.com/thinhbuiqn01/PTFlowerShop/master/public/src/assets/images/list-product";
 const ListCard = (props) => {
   const data = props.data;
+
   return (
     <div className="content">
       <div className="wrapper">

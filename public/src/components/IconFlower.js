@@ -22,7 +22,7 @@ const IconFlower = () => {
       <div className="wrapper">
         <h2>{title}</h2>
         <ul>
-          {topCatalog.map((catalog, index) => (
+          {topCatalog.slice(1, 7).map((catalog, index) => (
             <li key={index}>
               <a href={`/${catalog._id}`}>
                 <img src={image1} alt={catalog.namecategory} />

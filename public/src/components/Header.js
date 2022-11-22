@@ -1,40 +1,53 @@
-import { useState } from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import logo from "../assets/images/logo.jpg";
+
+import user from "../assets/images/user.png";
+import cart from "../assets/images/shopping-bag.png";
+import "../sass/_header.scss";
 
 function Header() {
-  const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand href="/">PThinhFlower</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <NavLink to="/" className="nav-link">Home</NavLink>
-            <NavLink to="/product" className="nav-link">Product</NavLink>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <div className="header">
+       <div className="top-line"></div>
+      <div className="wrapper">
+        <div className="logo">
+          <Link to="/" title="PThinhShopFlower">
+            <img src={logo} alt="logo" />
+          </Link>
+        </div>
+        <div className="search">
+          <input type="text" id="txtSearch" placeholder="Tìm sản phẩm" />
+          <a href="/" className="btn-search">
+            Tìm kiếm
+          </a>
+          <a href="/" className="support">
+            <strong>Hotline Miền Bắc</strong>
+            <span>000009099</span>
+          </a>
+          <a href="/" className="support">
+            <strong>Hotline Miền Nam</strong>
+            <span>000009099</span>
+          </a>
+          <a href="/" className="support">
+            <strong>Hotline Miền trung</strong>
+            <span>000009099</span>
+          </a>
+        </div>
+        <div className="cart">
+          <Link id="shopping-cart" to="/cart">
+            <img src={cart} alt="" />
+            <strong>Giỏ hàng</strong>
+          </Link>
+        </div>
+        <div className="my-account">
+          <Link id="my-account" to="/account">
+            <img src={user} alt="" />
+            <strong>Tài khoản</strong>
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }
 
