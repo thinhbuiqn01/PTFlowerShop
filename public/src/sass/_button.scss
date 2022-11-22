@@ -1,0 +1,35 @@
+.button {
+      display: inline-block;
+      text-align: center;
+
+      font-weight: 600;
+      cursor: pointer;
+      width: 200px;
+
+      .outline {
+            padding: 7px 10px;
+            border-radius: 10px;
+            margin:0 10px ;
+            background: #fff; 
+            border: 3px solid #ff9800;
+            color: #ff9800;
+
+            &:visited {
+                  border: 3px solid #49ab49;
+                  color: #49ab49;
+            }
+      }
+
+      .orange {
+            color: #ff9800;
+      }
+
+      .block {
+            margin:0 10px ;
+            padding: 7px 10px;
+            border-radius: 10px; 
+            background: #e32d2d;
+            color: #fff;
+            border: 3px solid #e32d2d; 
+      }
+}

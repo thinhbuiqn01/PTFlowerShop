@@ -1,0 +1,110 @@
+.card {
+      width: 100%;
+      position: relative;
+      display: block;
+      float: left;
+      clear: both;
+      margin-top: 20px;
+
+      .wrapper {
+            margin: 0 auto;
+            width: 1140px;
+            position: relative;
+            display: block;
+            clear: both;
+
+            .content {
+                  float: left;
+                  display: block;
+                  clear: both;
+                  width: 100%;
+
+                  margin-top: 15px;
+
+                  .l_item,
+                  .r_item {
+                        display: block;
+                        float: left;
+                  }
+
+                  .l_item {
+                        clear: left;
+                        width: 300px;
+
+                        img {
+                              width: 100%;
+                              padding: 10px;
+                        }
+                  }
+
+                  .r_item {
+                        clear: right;
+                        padding-left: 15px;
+                        width: calc(100% - 300px);
+
+                        h2 {
+                              font-weight: 600;
+                              color: #bd2026;
+                              font-size: 25px;
+                              margin-bottom: 10px;
+                        }
+
+                        .single-price {
+                              .old-price {
+                                    font-size: 16px;
+                                    font-weight: 400;
+                                    color: #83868c;
+                                    margin: 0 14px 0 0;
+                                    text-decoration: line-through;
+                              }
+
+                              .price {
+                                    font-size: 20px;
+                                    font-weight: 600;
+                                    color: #bd2026;
+                              }
+                        }
+
+                        .vat {
+                              margin: 0 0 10px;
+                              font-style: italic;
+                        }
+                        .pd_summary {
+                              border-top: 1px solid #e7e7e7;
+                              padding: 10px 0 0;
+                              text-align: justify;
+                              font-size: 14px;
+                              color: #a6a6a6;
+                        }
+
+                        p {
+                              margin: 7px 0 8px;
+                              padding: 0;
+                        }
+
+                        .note {
+                              border: 1px solid #ebebeb;
+                              padding: 10px 12px;
+                              position: relative;
+                              margin-top: 20px;
+                              color: #288ad6;
+                              font-size: 14px;
+
+                              h4 {
+                                    font-size: 18px;
+                                    margin: 0;
+                                    font-weight: 600;
+                                    display: inline-block;
+                                    position: absolute;
+                                    left: 49px;
+                                    top: -14px;
+                                    color: #288ad6;
+                                    padding: 0 14px;
+                                    background-color: #fff;
+                                    text-transform: uppercase;
+                              }
+                        }
+                  }
+            }
+      }
+}

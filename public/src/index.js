@@ -15,12 +15,14 @@ import Product from "./admin/Product";
 import Admin from "./components/Admin";
 import Category from "./admin/Category";
 import Login from "./components/Login";
+import Card from "./components/Card";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
+        <Route path="san-pham/:id" element={<Card />} />
         <Route path="login" element={<Login />} />
         
       </Route>
