@@ -16,6 +16,9 @@ import Admin from "./components/Admin";
 import Category from "./admin/Category";
 import Login from "./components/Login";
 import Card from "./components/Card";
+import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
+import StoreProvider from "./store/Provider";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,8 +26,9 @@ const router = createBrowserRouter(
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
         <Route path="san-pham/:id" element={<Card />} />
+        <Route path="gio-hang" element={<Cart />} />
+        <Route path="dat-hang" element={<Checkout />} />
         <Route path="login" element={<Login />} />
-        
       </Route>
       <Route path="/admin" element={<Admin />}>
         <Route index path="/admin/dashboard" element={<Dashboard />} />
@@ -36,4 +40,8 @@ const router = createBrowserRouter(
 );
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={router} />);
+root.render(
+  <StoreProvider>
+    <RouterProvider router={router} />
+  </StoreProvider>
+);

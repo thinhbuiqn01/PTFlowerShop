@@ -1,15 +1,19 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import logo from "../assets/images/logo.jpg";
 
-import user from "../assets/images/user.png";
 import cart from "../assets/images/shopping-bag.png";
+import user from "../assets/images/user.png";
 import "../sass/_header.scss";
+import StoreContext from "../store/Context";
 
 function Header() {
+  const [state, dispatch] = useContext(StoreContext);
+
   return (
     <div className="header">
-       <div className="top-line"></div>
+      <div className="top-line"></div>
       <div className="wrapper">
         <div className="logo">
           <Link to="/" title="PThinhShopFlower">
@@ -34,17 +38,24 @@ function Header() {
             <span>000009099</span>
           </a>
         </div>
-        <div className="cart">
-          <Link id="shopping-cart" to="/cart">
-            <img src={cart} alt="" />
-            <strong>Giỏ hàng</strong>
-          </Link>
-        </div>
-        <div className="my-account">
-          <Link id="my-account" to="/account">
-            <img src={user} alt="" />
-            <strong>Tài khoản</strong>
-          </Link>
+        <div>
+          <div className="cart">
+            <Link id="shopping-cart" to="/cart">
+              <img src={cart} alt="" />
+              <strong>
+                Giỏ hàng
+                {`${
+                  state.listCart.length > 0 ? `(${state.listCart.length})` : ""
+                }`}
+              </strong>
+            </Link>
+          </div>
+          <div className="my-account">
+            <Link id="my-account" to="/account">
+              <img src={user} alt="" />
+              <strong>Tài khoản</strong>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

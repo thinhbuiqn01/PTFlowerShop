@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 
 const userRoutes = require("./routes/UserRoutes");
 const productRoutes = require("./routes/ProductRoutes");
-const categoryRoutes = require("./routes/CategoryRoutes")
+const categoryRoutes = require("./routes/CategoryRoutes");
+const orderRoutes = require("./routes/OrderRoutes");
 
 const port = process.env.PORT || 5000;
 const MONGO_URL =
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use("/api/auth", userRoutes);
 app.use("/api/product", productRoutes);
 app.use("/api/category", categoryRoutes);
+app.use("/api/order", orderRoutes);
 
 mongoose
   .connect(MONGO_URL, {

@@ -1,0 +1,173 @@
+.checkout {
+      width: 100%;
+      position: relative;
+      display: block;
+      float: left;
+      clear: both;
+      margin-top: 20px;
+
+      a {
+            text-decoration: none;
+            color: #bd2026; 
+      }
+
+      .wrapper {
+            margin: 0 auto;
+            width: 1140px;
+            position: relative;
+            display: block;
+            clear: both;
+
+            .info {
+                  width: 60%;
+                  float: left;
+                  font: 14px open sans, sans-serif;
+                  margin-bottom: 0;
+
+                  h2 {
+                        font-size: 18px;
+                        color: #333;
+                        font-weight: 600;
+                        margin: 5px 0 1rem;
+                        width: 100%;
+                        float: left;
+                        clear: both;
+                  }
+
+                  div {
+                        margin-bottom: 1rem;
+                        clear: both;
+                        width: 100%;
+                        float: left;
+
+                        label {
+                              cursor: pointer;
+                              font-weight: 500;
+                              padding-top: 3px;
+                              padding-bottom: calc(0.375rem + 1px);
+                              margin-bottom: 0;
+                              font-size: inherit;
+                              line-height: 1.5;
+                              display: inline-block;
+                              width: 150px;
+                              float: left;
+
+                              span {
+                                    color: #bd2026;
+                              }
+                        }
+                        input {
+                              height: calc(1.5em + 0.5rem + 2px);
+                              padding: 0.25rem 0.5rem;
+                              font-size: 0.875rem;
+                              line-height: 1.5;
+                              display: block;
+                              width: calc(100% - 150px);
+                              font-weight: 400;
+                              background-color: #fff;
+                              background-clip: padding-box;
+                              border: 1px solid #ced4da;
+                              border-radius: 0.25rem;
+                              transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+                              float: left;
+                        }
+                        .invalid {
+                              display: none;
+                              width: auto !important;
+                              font-size: 12px;
+                              color: #dc3545 !important;
+                              margin: 2px 0 0 150px !important;
+                        }
+
+                        select {
+                              height: calc(1.5em + 0.5rem + 2px);
+                              padding: 0.25rem 0.5rem;
+                              font-size: 0.875rem;
+                              line-height: 1.5;
+                              display: block;
+                              width: calc(100% - 150px);
+                              font-weight: 400;
+                              background-color: #fff;
+                              background-clip: padding-box;
+                              border: 1px solid #ced4da;
+                              border-radius: 0.25rem;
+                              transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+                              float: left;
+                        }
+
+                        textarea {
+                              width: 100%;
+                              height: auto;
+                        }
+
+                        .button {
+                              margin: 0 auto;
+                              width: 96%;
+                        }
+                  }
+            }
+
+            .total {
+                  float: left;
+                  width: 40%;
+                  padding-left: 15px;
+
+                  .cart-item {
+                        padding: 15px 15px 0;
+                        min-height: 70px;
+                        border-bottom: 1px solid #e1e1e1;
+                        clear: both;
+                        float: left;
+                        width: 100%;
+                        .img {
+                              width: 64px;
+                              height: 64px;
+                              float: left;
+                              margin-right: 15px;
+                              clear: left;
+
+                              img {
+                                    width: 100%;
+                              }
+                        }
+                        .text {
+                              font-weight: 600;
+                              display: block; 
+
+                              p {
+                                    font-weight: 400;
+                                    font-size: 0.8rem;
+                                    margin: 7px 0 8px;
+                                    padding: 0;
+                              }
+                        }
+                  }
+
+                  #total {
+                        width: 100%;
+                        border: none;
+                        box-shadow: none;
+                        margin-top: 0;
+                        .each-row {
+                              width: 100%;
+                              float: left;
+                              padding-bottom: 7px;
+                              font-size: 14px;
+
+                              strong {
+                                    float: right;
+                              }
+                        }
+                        .last {
+                              border-top: 1px solid #e1e1e1;
+                              font-weight: 600;
+
+                              strong {
+                                    float: right;
+                              }
+                        }
+ 
+                  }
+            }
+      }
+}

@@ -1,8 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import "../sass/_card.scss";
-import { numberWithCommas } from "../constant/Comas";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import {
   detailCard,
   messageCard,
@@ -10,17 +8,28 @@ import {
   noteVat,
   srcImg,
 } from "../constant/constant";
+import "../sass/_card.scss";
+import StoreContext from "../store/Context";
 import { getProduct } from "../utils/APIRoutes";
 import Button from "./Button";
+import { setAddCartInput, addToCart } from "../store/actions";
 
 const Card = (props) => {
   const { id } = useParams();
   const [product, setProduct] = useState();
+
   useEffect(() => {
     axios.get(`${getProduct}/${id}`).then((res) => {
       setProduct(res.data);
     });
   }, [id]);
+
+  const [state, dispatch] = useContext(StoreContext);
+
+  const handleSetAddCart = (e) => {
+    dispatch(addToCart(product));
+  };
+
   return (
     <div className="card">
       <div className="wrapper">
@@ -45,9 +54,19 @@ const Card = (props) => {
               <p>{noteMessageCard.note2}</p>
             </div>
             {/* Button */}
-            <div className="area-oder">
-              <Button children="outline orange" title="Thêm vào giỏ hàng" />
-              <Button children="block primary" title="Thêm vào giỏ hàng" />
+            <div className="area-oder" style={{ padding: "10px" }}>
+              <Button
+                children="outline orange"
+                onClick={handleSetAddCart}
+                title="Thêm vào giỏ hàng"
+              />
+              <button onClick={handleSetAddCart}>as</button>
+              <Button
+                children="block primary"
+                onClick={handleSetAddCart}
+                title="Mua ngay"
+              />
+              <Link to='/dat-hang'  onClick={handleSetAddCart}>Mua ngay</Link>
             </div>
             {/* End button */}
           </div>

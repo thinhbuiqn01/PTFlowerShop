@@ -1,0 +1,147 @@
+.cart-checkout {
+      width: 100%;
+      position: relative;
+      display: block;
+      float: left;
+      clear: both;
+      margin-top: 20px;
+
+      a {
+            text-decoration: none;
+            cursor: pointer;
+            color: #000;
+      }
+
+      .wrapper {
+            margin: 0 auto;
+            width: 1140px;
+            position: relative;
+            display: block;
+            clear: both;
+
+            .cart-items {
+                  width: 75%;
+                  float: left;
+                  margin-top: 10px;
+                  padding-right: 20px;
+
+                  .cart-item {
+                        width: 100%;
+                        position: relative;
+                        border: 2px solid #e1e1e1;
+                        margin-bottom: 10px;
+                        height: 120px;
+                        border-radius: 5px;
+                        box-shadow: 0 2px 5px #0000001a;
+                        padding: 15px;
+
+                        .img {
+                              width: 64px;
+                              float: left;
+                              margin-right: 15px;
+                              clear: left;
+
+                              img {
+                                    width: 100%;
+                              }
+                        }
+
+                        .text {
+                              width: calc(100% - 64px - 15px);
+                              float: left;
+                              clear: right;
+                              font-size: 14px;
+
+                              a {
+                                    font-weight: 600;
+                                    display: block;
+                                    color: #bd2026;
+                                    text-decoration: none;
+                                    border: none;
+                              }
+
+                              p {
+                                    margin: 7px 0 8px;
+                                    padding: 0;
+                              }
+
+                              .ctrl-quantity {
+                                    .minus {
+                                          border-radius: 4px 0 0 4px;
+                                    }
+
+                                    .plus {
+                                          border-radius: 0 4px 4px 0;
+                                    }
+                                    a {
+                                          cursor: pointer;
+                                          width: 32px;
+                                          padding-top: 4px;
+                                          height: 32px;
+                                          text-align: center;
+                                          border: 1px solid #e1e1e1;
+                                          float: left;
+                                          border-radius: 0.2rem;
+                                    }
+
+                                    input {
+                                          border: 1px solid #e1e1e1;
+                                          margin-left: -1px;
+                                          margin-right: -1px;
+                                          float: left;
+                                          height: 32px;
+                                          padding: 7.5px 8px;
+                                          width: 70px;
+                                          background-clip: padding-box;
+                                          -moz-appearance: textfield;
+                                          user-select: none;
+                                          text-align: center;
+                                    }
+                              }
+                        }
+
+                        .close {
+                              position: absolute;
+                              right: 10px;
+                              top: 10px;
+                              font-size: 16px;
+                              font-weight: 600;
+                        }
+                  }
+            }
+
+            .total {
+                  width: 25%;
+                  float: left;
+                  margin-top: 10px;
+                  border: 2px solid #e1e1e1;
+                  border-radius: 5px;
+                  padding: 15px;
+                  box-shadow: 0 2px 5px #0000001a;
+
+                  .each-row {
+                        width: 100%;
+                        float: left;
+                        padding-bottom: 7px;
+                        font-size: 14px;
+
+                        strong {
+                              float: right;
+                        }
+                  }
+
+                  .btn-order {
+                        width: 100%;
+
+                        .button {
+                              width: 100%;
+                        }
+                  }
+
+                  .last {
+                        border-top: 1px solid #e1e1e1;
+                        font-weight: 600;
+                  }
+            }
+      }
+}
