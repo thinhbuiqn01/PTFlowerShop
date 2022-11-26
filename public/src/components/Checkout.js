@@ -204,8 +204,11 @@ const Checkout = (props) => {
 
               <div>
                 {/* submit form */}
-                <Button children="block primary" title="Đặt hàng" />
-                <button onClick={(e) => handleSubmit(e)}> dat hang</button>
+                <Button
+                  children="block primary"
+                  onClick={(e) => handleSubmit(e)}
+                  title="Đặt hàng"
+                /> 
                 {/* end submit form */}
               </div>
             </div>

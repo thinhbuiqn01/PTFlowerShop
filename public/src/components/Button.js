@@ -1,10 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../sass/_button.scss";
 
 const Button = (props) => {
   return (
     <span className="button">
-      <div className={`${props.children}`}>{props.title}</div>
+      <Link to={props.to}>
+        <div className={`${props.children}`} {...props}>
+          {props.title}
+        </div>
+      </Link>
     </span>
   );
 };

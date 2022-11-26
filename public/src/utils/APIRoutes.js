@@ -4,6 +4,7 @@ export const loginRoute = `${host}/api/auth/login`;
 
 export const addProduct = `${host}/api/product/new`;
 export const listProduct = `${host}/api/product`;
+export const listProductOfCate = `${host}/api/product/cate`;
 export const deleteProduct = `${host}/api/product`;
 export const getProduct = `${host}/api/product`;
 export const updateProduct = `${host}/api/product/:id/update`;

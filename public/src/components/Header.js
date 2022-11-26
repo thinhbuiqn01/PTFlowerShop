@@ -40,7 +40,7 @@ function Header() {
         </div>
         <div>
           <div className="cart">
-            <Link id="shopping-cart" to="/cart">
+            <Link id="shopping-cart" to="/gio-hang">
               <img src={cart} alt="" />
               <strong>
                 Giỏ hàng

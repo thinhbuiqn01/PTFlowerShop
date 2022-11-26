@@ -1,7 +1,12 @@
 import { ADD_TO_CART, SET_ADD_CART_INPUT } from "./constants";
 
+const listCart =
+  localStorage.getItem("listCart") != null
+    ? JSON.parse(localStorage.getItem("listCart"))
+    : [];
+ 
 const initState = {
-  listCart: [],
+  listCart: listCart,
   listCartInput: {},
 };
 
@@ -10,12 +15,12 @@ const reducer = (state, action) => {
     case SET_ADD_CART_INPUT:
       return {
         ...state,
-        listCartInput: action.payload,
+        listCart: action.payload,
       };
     case ADD_TO_CART:
       return {
         ...state,
-        listCart: [...state.listCart, action.payload],
+        listCart: [...listCart, action.payload],
       };
     default:
       throw new Error("Invalid Action");

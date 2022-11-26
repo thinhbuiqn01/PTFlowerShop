@@ -19,6 +19,7 @@ import Card from "./components/Card";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import StoreProvider from "./store/Provider";
+import ProductUI from "./components/ProductUI";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +27,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
         <Route path="san-pham/:id" element={<Card />} />
+        <Route path="san-pham" element={<ProductUI />} />
         <Route path="gio-hang" element={<Cart />} />
         <Route path="dat-hang" element={<Checkout />} />
         <Route path="login" element={<Login />} />

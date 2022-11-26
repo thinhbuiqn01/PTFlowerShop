@@ -41,7 +41,7 @@ module.exports.getProductID = async (req, res, next) => {
 module.exports.updateProduct = async (req, res, next) => {
   try {
     const { nameproduct, origin, price, image, categoryID } = req.body;
-    
+
     const data = await Product.updateOne({
       nameproduct,
       origin,
@@ -51,6 +51,15 @@ module.exports.updateProduct = async (req, res, next) => {
     });
     return res.json({ status: true, data });
   } catch (err) {
+    next(err);
+  }
+};
+
+module.exports.listProductOfId = async (req, res, next) => {
+  try {
+    const data = await Product.find({ categoryID: req.params.categoryID });
+    return res.json({ status: true, data });
+  } catch {
     next(err);
   }
 };

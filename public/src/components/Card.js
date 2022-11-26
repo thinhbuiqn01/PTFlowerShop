@@ -26,9 +26,13 @@ const Card = (props) => {
 
   const [state, dispatch] = useContext(StoreContext);
 
-  const handleSetAddCart = (e) => {
+  const handleSetAddCart = (e) => { 
     dispatch(addToCart(product));
   };
+
+  const handleBuyNow = (e) => {
+    dispatch(addToCart(product));
+  }
 
   return (
     <div className="card">
@@ -56,17 +60,17 @@ const Card = (props) => {
             {/* Button */}
             <div className="area-oder" style={{ padding: "10px" }}>
               <Button
+              
                 children="outline orange"
                 onClick={handleSetAddCart}
                 title="Thêm vào giỏ hàng"
-              />
-              <button onClick={handleSetAddCart}>as</button>
+              /> 
               <Button
                 children="block primary"
-                onClick={handleSetAddCart}
+                onClick={handleBuyNow}
+                to="/dat-hang"
                 title="Mua ngay"
-              />
-              <Link to='/dat-hang'  onClick={handleSetAddCart}>Mua ngay</Link>
+              /> 
             </div>
             {/* End button */}
           </div>
